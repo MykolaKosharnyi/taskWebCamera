@@ -1,8 +1,25 @@
 package model.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Picture")
 public class Picture {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
 	private long id;
+	
+	@Column(name="cameraId")
 	private long cameraId;
+	
+	@Column(name="info")
 	private String info;
 	
 	public static class Builder{

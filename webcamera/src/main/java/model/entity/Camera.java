@@ -7,25 +7,25 @@ import java.util.List;
 
 public class Camera implements Observed, Runnable{
 	
-	private int idCamera;	
+	private long idCamera;	
 	private final int TIME_TO_DELAY;
 	private List<Observer> observers = new ArrayList<>();
 	
-	public Camera(int idCamera){
+	public Camera(long idCamera){
 		this.idCamera = idCamera;
 		TIME_TO_DELAY = 10;
 	}
 	
-	public Camera(int idCamera, int timeDoDelay){
+	public Camera(long idCamera, int timeToDelay){
 		this.idCamera = idCamera;
-		TIME_TO_DELAY = timeDoDelay;
+		TIME_TO_DELAY = timeToDelay;
 	}
 
-	public int getIdCamera() {
+	public long getIdCamera() {
 		return idCamera;
 	}
 
-	public void setIdCamera(int idCamera) {
+	public void setIdCamera(long idCamera) {
 		this.idCamera = idCamera;
 	}
 

@@ -1,15 +1,25 @@
 package ua.webcamera;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import controller.WebCameraSystem;
 import model.entity.Camera;
+import model.service.PictureService;
 
 /**
  * Hello world!
  *
  */
-public class Main {
-    public static void main( String[] args ){
+public class Main { 
+    private static ApplicationContext context;
+
+	public static void main( String[] args ){
+    	context = new ClassPathXmlApplicationContext("spring-configuration.xml");
+    	
     	final WebCameraSystem cameraSystem = new WebCameraSystem();
+    	PictureService pictureService = (PictureService) context.getBean("pictureService");
+    	cameraSystem.setPictureService(pictureService);
     	
     	Camera c1 = new Camera(1, 1);
     	c1.addObserver(cameraSystem);	
@@ -30,7 +40,7 @@ public class Main {
                     	System.out.println(cameraSystem.getLastPicture(1));
                     	System.out.println(cameraSystem.getLastPicture(2));
                     	System.out.println(cameraSystem.getLastPicture(3));
-                    	System.out.println("Amount cameras in container: " + cameraSystem.getResults().size());
+                    	System.out.println("-------------------------------");
                     	
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
