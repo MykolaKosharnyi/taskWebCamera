@@ -5,41 +5,39 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import controller.WebCameraSystem;
 import model.entity.Camera;
-import model.service.PictureService;
 
 /**
- * Hello world!
+ * 
  *
  */
 public class Main { 
     private static ApplicationContext context;
 
 	public static void main( String[] args ){
-    	context = new ClassPathXmlApplicationContext("spring-configuration.xml");
     	
-    	final WebCameraSystem cameraSystem = new WebCameraSystem();
-    	PictureService pictureService = (PictureService) context.getBean("pictureService");
-    	cameraSystem.setPictureService(pictureService);
+		context = new ClassPathXmlApplicationContext("spring-configuration.xml");
+		final WebCameraSystem CAMERA_SYSTEM = (WebCameraSystem) context.getBean("webCameraSystem");
     	
     	Camera c1 = new Camera(1, 1);
-    	c1.addObserver(cameraSystem);	
+    	c1.addObserver(CAMERA_SYSTEM);	
     	Camera c2 = new Camera(2, 2);
-    	c2.addObserver(cameraSystem);
+    	c2.addObserver(CAMERA_SYSTEM);
     	Camera c3 = new Camera(3, 3);
-    	c3.addObserver(cameraSystem);
+    	c3.addObserver(CAMERA_SYSTEM);
     	
     	new Thread(c1).start();
     	new Thread(c2).start();
     	new Thread(c3).start();
     	
-    	new Thread(new Runnable() {
+    	/* This block of code for getting result */
+		new Thread(new Runnable() {
             @Override
             public void run() {
                 while(true){
                     try {
-                    	System.out.println(cameraSystem.getLastPicture(1));
-                    	System.out.println(cameraSystem.getLastPicture(2));
-                    	System.out.println(cameraSystem.getLastPicture(3));
+                    	System.out.println(CAMERA_SYSTEM.getLastPicture(1));
+                    	System.out.println(CAMERA_SYSTEM.getLastPicture(2));
+                    	System.out.println(CAMERA_SYSTEM.getLastPicture(3));
                     	System.out.println("-------------------------------");
                     	
                         Thread.sleep(1000);
@@ -50,4 +48,5 @@ public class Main {
             }
         }).start();
     }
+	
 }

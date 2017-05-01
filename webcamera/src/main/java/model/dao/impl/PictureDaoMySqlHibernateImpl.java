@@ -1,4 +1,4 @@
-package model.dao;
+package model.dao.impl;
 
 import java.util.List;
 
@@ -8,9 +8,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
+import model.dao.PictureDAO;
 import model.entity.Picture;
 
-public class PictureDaoImpl implements PictureDAO {
+public class PictureDaoMySqlHibernateImpl implements PictureDAO {
 
 	private SessionFactory sessionFactory;
     

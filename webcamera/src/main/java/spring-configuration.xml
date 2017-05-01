@@ -46,11 +46,17 @@
         </beans:property>
     </beans:bean>
     
-    <beans:bean id="pictureDAO" class="model.dao.PictureDaoImpl">
+    <beans:bean id="pictureMapDAO" class="model.dao.impl.PictureDaoMapImpl"/>
+
+    <beans:bean id="pictureHibernameDAO" class="model.dao.impl.PictureDaoMySqlHibernateImpl">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
     <beans:bean id="pictureService" class="model.service.PictureServiceImpl">
-        <beans:property name="pictureDAO" ref="pictureDAO"></beans:property>
+        <beans:property name="pictureDAO" ref="pictureHibernameDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="webCameraSystem" class="controller.WebCameraSystem">
+        <beans:property name="pictureService" ref="pictureService"></beans:property>
     </beans:bean>
 
 </beans:beans>
