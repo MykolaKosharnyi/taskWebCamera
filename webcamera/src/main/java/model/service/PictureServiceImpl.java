@@ -8,10 +8,20 @@ import org.springframework.transaction.annotation.Transactional;
 import model.dao.PictureDAO;
 import model.entity.Picture;
 
+/**
+ * 
+ * @author  Nikolay Kosharnyi
+ * 
+ * Realization of service for operation Picture.
+ *
+ */
 @Service
 @Transactional
 public class PictureServiceImpl implements PictureService {
 	
+	/**
+	 * Inject concrete DAO realization.
+	 */
 	private PictureDAO pictureDAO;
 
 	public void setPictureDAO(PictureDAO pictureDAO) {

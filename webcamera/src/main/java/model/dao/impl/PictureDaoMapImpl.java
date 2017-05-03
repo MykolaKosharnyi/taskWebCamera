@@ -8,6 +8,13 @@ import java.util.Map;
 import model.dao.PictureDAO;
 import model.entity.Picture;
 
+/**
+ * 
+ * @author  Nikolay Kosharnyi
+ * 
+ * Realization DAO for saving result in HashMap structure.
+ *
+ */
 public class PictureDaoMapImpl implements PictureDAO {
 
 	private Map<Long, List<Picture>> results = new HashMap<>();

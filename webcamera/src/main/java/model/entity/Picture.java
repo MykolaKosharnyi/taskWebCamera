@@ -7,6 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author  Nikolay Kosharnyi
+ * 
+ * Entity for Picture.
+ *
+ */
 @Entity
 @Table(name="Picture")
 public class Picture {
@@ -19,6 +26,9 @@ public class Picture {
 	@Column(name="cameraId")
 	private long cameraId;
 	
+	/**
+	 * Actually here saving date of getting picture.
+	 */
 	@Column(name="info")
 	private String info;
 	

@@ -11,6 +11,13 @@ import org.hibernate.criterion.Restrictions;
 import model.dao.PictureDAO;
 import model.entity.Picture;
 
+/**
+ * 
+ * @author  Nikolay Kosharnyi
+ *
+ *	Realization DAO for saving result in MySql database using Hibernate.
+ *
+ */
 public class PictureDaoMySqlHibernateImpl implements PictureDAO {
 
 	private SessionFactory sessionFactory;

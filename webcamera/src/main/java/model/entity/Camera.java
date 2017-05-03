@@ -5,10 +5,26 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 
+ * @author  Nikolay Kosharnyi
+ * 
+ * Class which run like Thread and observe Observer every TIME_TO_DELAY seconds to save result in
+ * the store.
+ *
+ */
 public class Camera implements Observed, Runnable{
 	
 	private long idCamera;	
+	
+	/**
+	 * Period in seconds after which observe Observer
+	 */
 	private final int TIME_TO_DELAY;
+	
+	/**
+	 * All Observers to this camera
+	 */
 	private List<Observer> observers = new ArrayList<>();
 	
 	public Camera(long idCamera){
